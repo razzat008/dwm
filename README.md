@@ -4,10 +4,12 @@ dwm is an extremely fast, small, and dynamic window manager for X.
 
 # you need to have
 
-    alacritty<br>
-    slstatus<br>
-    nerdfonts<br>
-    nitrogen<br>
+    alacritty
+    slstatus
+    nerdfonts
+    nitrogen
+    picom
+    sxhkd
 
 ## Requirements
 
