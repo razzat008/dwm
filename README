@@ -23,7 +23,7 @@ Running dwm
 -----------
 Add the following line to your .xinitrc to start dwm using startx:
 
-    exec dwm
+    while type dwm >/dev/null; do dwm && continue || break; done
 
 In order to connect dwm to a specific display, make sure that
 the DISPLAY environment variable is set correctly, e.g.:
