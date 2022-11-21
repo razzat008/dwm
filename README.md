@@ -1,6 +1,13 @@
 # dwm - dynamic window manager
 
-dwm is an extremely fast, small, and dynamic window manager for X.
+dwm is an extremely fast, small, and dynamic window manager for X. These are the
+patches that I have apllied to this dwm:
+
+    spiral 
+    dwindle 
+    horizgrid 
+    centeredmaster 
+    centeredfloatingmaster
 
 # you need to have (if you've copied the .xinitrc file too)
 
@@ -38,14 +45,7 @@ environment variable is set correctly, e.g.:
 
 (This will start dwm on display :1 of the host foo.bar.)
 
-In order to display status info in the bar, you can do something like this in
-your .xinitrc:
-
-    while xsetroot -name "`date` `uptime | sed 's/.*,//'`"
-    do
-    	sleep 1
-    done &
-    exec dwm
+I used slstatus to get statusline as shown in the screenshots below:
 
 ## Configuration
 
