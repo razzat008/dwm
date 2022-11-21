@@ -3,7 +3,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
-static const unsigned int gappx     = 5;        /* gap pixel between windows */
+static const unsigned int gappx     = 0;        /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -11,7 +11,7 @@ static const int vertpad            = 8;       /* vertical padding of bar */
 static const int sidepad            = 0;       /* horizontal padding of bar */
 //static const char *fonts[]          = { "Iosevka:size=16" };
 static const char dmenufont[]       = "monospace:size=16";
-static const char *fonts[]          = {"Iosevka:style:medium:size=14" ,"JetBrainsMono Nerd Font:style:medium:size=13",
+static const char *fonts[]          = {"Iosevka:style:medium:size=12" ,"JetBrainsMono Nerd Font:style:medium:size=13",
                                         "Material Design Icons Desktop:size=13" };
 static const char col_gray1[]       = "#222222";//backgroud colour normally seen
 static const char col_gray2[]       = "#83bae8";//border for unfocused window
@@ -26,7 +26,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "", "", "", "", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -34,10 +34,10 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",       NULL,     NULL,       0,            1,           -1 },
+	{ "Gimp",       NULL,     NULL,       0,            0,           -1 },
 	{ "firefox",    NULL,     NULL,       1 << 1,       0,           -1 },
 	// { "Alacritty",  NULL,     NULL,       1 <<0  ,      0,           -1 },
-  { "TelegramDesktop", NULL,  NULL,     1 << 2,       0,            -1},
+  { "TelegramDesktop", NULL,  NULL,     1 << 3,       0,            -1},
 	{ "Nitrogen",       NULL,     NULL,       0,            1,           -1 },
 };
 
@@ -54,8 +54,8 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
- 	{ "[@]",      spiral },
- 	{ "[\\]",      dwindle },
+  { "[@]",      spiral },
+  { "[\\]",      dwindle },
 	{ "###",      horizgrid },
 	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
@@ -82,6 +82,7 @@ static const Key keys[] = {
   {0,              XF86XK_MonBrightnessDown,      spawn,          SHCMD("light -U 5")},
   {0,              XF86XK_MonBrightnessUp,        spawn,          SHCMD("light -A 5")},
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("rofi -show drun") },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("rofi -show p -modi p:$HOME/.config/rofi/rofi-power-menu") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstackvis,  {.i = +1 } },

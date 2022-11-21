@@ -11,7 +11,7 @@ static const int vertpad            = 8;       /* vertical padding of bar */
 static const int sidepad            = 0;       /* horizontal padding of bar */
 //static const char *fonts[]          = { "Iosevka:size=16" };
 static const char dmenufont[]       = "monospace:size=16";
-static const char *fonts[]          = {"Iosevka:style:medium:size=10" ,"JetBrainsMono Nerd Font:style:medium:size=13",
+static const char *fonts[]          = {"Iosevka:style:medium:size=12" ,"JetBrainsMono Nerd Font:style:medium:size=13",
                                         "Material Design Icons Desktop:size=13" };
 static const char col_gray1[]       = "#222222";//backgroud colour normally seen
 static const char col_gray2[]       = "#83bae8";//border for unfocused window
@@ -82,6 +82,7 @@ static const Key keys[] = {
   {0,              XF86XK_MonBrightnessDown,      spawn,          SHCMD("light -U 5")},
   {0,              XF86XK_MonBrightnessUp,        spawn,          SHCMD("light -A 5")},
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("rofi -show drun") },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("rofi -show p -modi p:$HOME/.config/rofi/rofi-power-menu") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstackvis,  {.i = +1 } },
