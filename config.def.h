@@ -67,6 +67,7 @@ static const Layout layouts[] = {
 #define MODKEY Mod4Mask
 #define altkey Mod1Mask
 #define printsc 0xff61
+#define brightup 0x1008FF02
 // #define altkey Mod1Mask
 #define TAGKEYS(KEY, TAG)                                                      \
   {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
@@ -87,8 +88,9 @@ static const char *termcmd[] = {"alacritty", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
+    // custom keybinds
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("light -U 5")},
-    {0, XF86XK_MonBrightnessUp, spawn, SHCMD("light -A 5")},
+    {0, brightup, spawn, SHCMD("light -A 5")},
     {0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer --increase 4")},
     {0, XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer --decrease 4")},
     {0, XF86XK_AudioMute, spawn, SHCMD("pamixer -t")},
@@ -98,6 +100,7 @@ static const Key keys[] = {
     {MODKEY, XK_d, spawn, SHCMD("rofi -show drun")},
     {MODKEY | ShiftMask, XK_p, spawn,
      SHCMD("rofi -show p -modi p:$HOME/.config/rofi/rofi-power-menu")},
+    //
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstackvis, {.i = +1}},
