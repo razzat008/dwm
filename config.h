@@ -7,10 +7,10 @@ static const unsigned int gappx = 0;    /* gap pixel between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
-static const int vertpad = 8;           /* vertical padding of bar */
+static const int vertpad = 0;           /* vertical padding of bar */
 static const int sidepad = 0;           /* horizontal padding of bar */
 // static const char *fonts[]          = { "Iosevka:size=16" };
-static const char dmenufont[] = "monospace:size=16";
+static const char dmenufont[] = "monospace:size=12";
 static const char *fonts[] = {"Iosevka:style:medium:size=12",
                               "JetBrainsMono Nerd Font:style:medium:size=13",
                               "Material Design Icons Desktop:size=13"};
@@ -85,7 +85,7 @@ static const Layout layouts[] = {
 /* commands */
 // static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb",
 // col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[] = {"alacritty", NULL};
+static const char *termcmd[] = {"/usr/local/bin/st", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
@@ -101,7 +101,9 @@ static const Key keys[] = {
 
     {altkey, XK_f, spawn, SHCMD("firefox")},
 
-    {altkey, XK_p, spawn, SHCMD("firefox --private-window")},
+    {MODKEY, XK_n, spawn, SHCMD("nemo")},
+
+    {altkey, XK_p, spawn, SHCMD("firefox --private-window --new-tab")},
 
     {altkey, 0xff52, spawn, SHCMD("brillo -q -A 5")},
 

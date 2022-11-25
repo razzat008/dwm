@@ -7,10 +7,10 @@ static const unsigned int gappx = 0;    /* gap pixel between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
-static const int vertpad = 8;           /* vertical padding of bar */
+static const int vertpad = 0;           /* vertical padding of bar */
 static const int sidepad = 0;           /* horizontal padding of bar */
 // static const char *fonts[]          = { "Iosevka:size=16" };
-static const char dmenufont[] = "monospace:size=16";
+static const char dmenufont[] = "monospace:size=12";
 static const char *fonts[] = {"Iosevka:style:medium:size=12",
                               "JetBrainsMono Nerd Font:style:medium:size=13",
                               "Material Design Icons Desktop:size=13"};
@@ -42,6 +42,7 @@ static const Rule rules[] = {
     // { "Alacritty",  NULL,     NULL,       1 <<0  ,      0,           -1 },
     {"TelegramDesktop", NULL, NULL, 1 << 3, 0, -1},
     {"Nitrogen", NULL, NULL, 0, 1, -1},
+    {"Gscreenshot", NULL, NULL, 0, 1, -1},
 };
 
 /* layout(s) */
@@ -89,14 +90,28 @@ static const char *termcmd[] = {"alacritty", NULL};
 static const Key keys[] = {
     /* modifier                     key        function        argument */
     // custom keybinds
-    {0, XF86XK_MonBrightnessDown, spawn, SHCMD("light -U 5")},
-    {0, brightup, spawn, SHCMD("light -A 5")},
+    {0, XF86XK_MonBrightnessDown, spawn, SHCMD("brillo -q -U 5")},
+    {0, XF86XK_RFKill, spawn, SHCMD("rfkill toggle all")},
+    {0, brightup, spawn, SHCMD("brillo -q -A 5")},
     {0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer --increase 4")},
     {0, XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer --decrease 4")},
     {0, XF86XK_AudioMute, spawn, SHCMD("pamixer -t")},
     // take screen shot
     {0, printsc, spawn, SHCMD("gscreenshot")},
+
     {altkey, XK_f, spawn, SHCMD("firefox")},
+
+    {MODKEY, XK_n, spawn, SHCMD("nemo")},
+
+    {altkey, XK_p, spawn, SHCMD("firefox --private-window")},
+
+    {altkey, 0xff52, spawn, SHCMD("brillo -q -A 5")},
+
+    {altkey, 0xff54, spawn, SHCMD("brillo -q -U 5")},
+
+    {altkey, XK_n, spawn,
+     SHCMD("firefox --private-window /home/ceaser/Desktop/")},
+
     {MODKEY, XK_d, spawn, SHCMD("rofi -show drun")},
     {MODKEY | ShiftMask, XK_p, spawn,
      SHCMD("rofi -show p -modi p:$HOME/.config/rofi/rofi-power-menu")},
