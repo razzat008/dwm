@@ -11,9 +11,9 @@ static const int vertpad = 0;           /* vertical padding of bar */
 static const int sidepad = 0;           /* horizontal padding of bar */
 // static const char *fonts[]          = { "Iosevka:size=16" };
 static const char dmenufont[] = "monospace:size=12";
-static const char *fonts[] = {"Iosevka:style:medium:size=12",
-                              "JetBrainsMono Nerd Font:style:medium:size=13",
-                              "Material Design Icons Desktop:size=13"};
+static const char *fonts[] = {"Iosevka:style:medium:size=11",
+                              "JetBrainsMono Nerd Font:style:medium:size=11",
+                              "Material Design Icons Desktop:size=11"};
 static const char col_gray1[] = "#222222"; // backgroud colour normally seen
 static const char col_gray2[] = "#83bae8"; // border for unfocused window
 static const char col_gray3[] = "#fff";    // font color ;normal
@@ -38,7 +38,7 @@ static const Rule rules[] = {
      */
     /* class      instance    title       tags mask     isfloating   monitor */
     {"Gimp", NULL, NULL, 0, 0, -1},
-    {"librewolf", NULL, NULL, 1 << 1, 0, -1},
+    {"LibreWolf", NULL, NULL, 1 << 1, 0, -1},
     // { "Alacritty",  NULL,     NULL,       1 <<0  ,      0,           -1 },
     {"TelegramDesktop", NULL, NULL, 1 << 3, 0, -1},
     {"Nitrogen", NULL, NULL, 0, 1, -1},
