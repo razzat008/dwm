@@ -10,8 +10,8 @@ static const int topbar = 1;            /* 0 means bottom bar */
 static const int vertpad = 0;           /* vertical padding of bar */
 static const int sidepad = 0;           /* horizontal padding of bar */
 // static const char *fonts[]          = { "Iosevka:size=16" };
-static const char dmenufont[] = "monospace:size=12";
-static const char *fonts[] = {"Iosevka:style:medium:size=11",
+static const char dmenufont[] = "Iosevka:size=10";
+static const char *fonts[] = {"Iosevka:style:medium:size=10",
                               "JetBrainsMono Nerd Font:style:medium:size=11",
                               "Material Design Icons Desktop:size=11"};
 static const char col_gray1[] = "#222222"; // backgroud colour normally seen
@@ -83,8 +83,8 @@ static const Layout layouts[] = {
   }
 
 /* commands */
-// static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb",
-// col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb",
+col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 // static const char *termcmd[] = {"/usr/local/bin/st", NULL};
 static const char *termcmd[] = {"/usr/bin/alacritty", NULL};
 
@@ -114,11 +114,14 @@ static const Key keys[] = {
     {altkey, XK_n, spawn,
      SHCMD("librewolf --private-window /home/ceaser/Desktop/")},
 
-    {MODKEY, XK_d, spawn, SHCMD("rofi -show drun")},
+    // rofi drun 
+    // {MODKEY, XK_d, spawn, SHCMD("rofi -show drun")},
     {MODKEY | ShiftMask, XK_p, spawn,
-     SHCMD("rofi -show p -modi p:$HOME/.config/rofi/rofi-power-menu")},
+     // SHCMD("rofi -show p -modi p:$HOME/.config/rofi/rofi-power-menu")},
+     SHCMD("power_menu.sh")},
     //
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
+    {MODKEY, XK_d, spawn, {.v = dmenucmd}},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstackvis, {.i = +1}},
     {MODKEY, XK_k, focusstackvis, {.i = -1}},
