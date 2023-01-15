@@ -8,8 +8,10 @@ patches that I have apllied to this dwm:
     horizgrid 
     centeredmaster 
     centeredfloatingmaster
+    hide_vacant_tags
+    hide_and_restore_hidden_stacks
 
-# you need to have (if you've copied the .xinitrc file too)
+# you need to have (if you've copied the .xinitrc file too)[optional]
 
     alacritty
     slstatus
@@ -34,7 +36,7 @@ root):
 
 ## Running dwm
 
-Add the following line to your .xinitrc to start dwm using startx:
+Add the following line to your .xinitrc to start dwm using startx[without killing all applications]:
 
     while type dwm >/dev/null; do dwm && continue || break; done
 
@@ -50,7 +52,7 @@ I used slstatus to get statusline as shown in the screenshots below:
 ## Configuration
 
 The configuration of dwm is done by creating a custom config.h and (re)compiling
-the source code.
+the source code.[below shown screen shots are old and are needed to be updated]
 
 ![Screenshot_2022-10-28_13-49-14](https://user-images.githubusercontent.com/93041325/198539809-2f1c76fc-6787-4f14-b555-fbf6405fbb07.png)
 
