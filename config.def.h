@@ -69,6 +69,7 @@ static const Layout layouts[] = {
 /* key definitions */
 #define MODKEY Mod4Mask
 #define altkey Mod1Mask
+#define space 0x20
 #define printsc 0xff61
 #define brightup 0x1008FF02
 // #define altkey Mod1Mask
@@ -93,6 +94,7 @@ static const char *termcmd[] = {"/usr/local/bin/st", NULL};
 static const Key keys[] = {
     /* modifier                     key        function        argument */
     // custom keybinds
+    {altkey,        space,      spawn,      SHCMD("via ")},
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("brillo -q -U 5")},
     {0, XF86XK_RFKill, spawn, SHCMD("rfkill toggle all")},
     {0, brightup, spawn, SHCMD("brillo -q -A 5")},
