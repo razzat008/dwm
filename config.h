@@ -37,14 +37,14 @@ static const Rule rules[] = {
      *	WM_NAME(STRING) = title
      */
     /* class      instance    title       tags mask     isfloating   monitor */
-    {"Gimp", NULL, NULL, 0, 0, -1},
-    {"LibreWolf", NULL, NULL, 1 << 1, 0, -1},
-    // { "Alacritty",  NULL,     NULL,       1 <<0  ,      0,           -1 },
-    { "Signal",  NULL,     NULL,       1 <<3  ,      0,           -1 },
-    { "neovide",  NULL,     NULL,       1 <<2  ,      0,           -1 },
-    {"TelegramDesktop", NULL, NULL, 1 << 3, 0, -1},
-    {"Nitrogen", NULL, NULL, 0, 1, -1},
-    {"Gscreenshot", NULL, NULL, 0, 1, -1},
+    {"Gimp",      NULL,       NULL,           0,        0,           -1},
+    {"LibreWolf", NULL,       NULL,       1 <<1 ,       0,           -1},
+    {"Signal",    NULL,       NULL,       1 <<3  ,      0,           -1 },
+    {"neovide",   NULL,       NULL,       1 <<2  ,      0,           -1 },
+    /* class            instance    title       tags mask     isfloating   monitor */
+    {"Nitrogen",        NULL,       NULL,       0,                1,        -1},
+    {"Gscreenshot",     NULL,       NULL,       0,                1,        -1},
+    {"TelegramDesktop", NULL,       NULL,       1 << 3,           0,        -1},
 };
 
 /* layout(s) */
@@ -61,9 +61,12 @@ static const Layout layouts[] = {
     /* symbol     arrange function */
     {"[]=", tile}, /* first entry is default */
     {"><>", NULL}, /* no layout function means floating behavior */
-    {"[M]", monocle},        {"[@]", spiral},
-    {"[\\]", dwindle},       {"###", horizgrid},
-    {"|M|", centeredmaster}, {">M>", centeredfloatingmaster},
+    {"[M]", monocle},
+    {"[@]", spiral},
+    {"[\\]", dwindle},
+    {"###", horizgrid},
+    {"|M|", centeredmaster},
+    {">M>", centeredfloatingmaster},
 };
 
 /* key definitions */
@@ -74,7 +77,7 @@ static const Layout layouts[] = {
 #define brightup 0x1008FF02
 // #define altkey Mod1Mask
 #define TAGKEYS(KEY, TAG)                                                      \
-  {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
+      {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
       {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
       {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
       {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
@@ -88,51 +91,42 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb",
 col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-// static const char *termcmd[] = {"/usr/local/bin/st", NULL};
 static const char *termcmd[] = {"/usr/local/bin/st", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
-    // custom keybinds
-    {altkey,        space,      spawn,      SHCMD("via ")},
+//custom keybindings
+    {altkey,        space,        spawn, SHCMD("via ")}, //to use via
+    {0, XF86XK_AudioRaiseVolume,  spawn, SHCMD("/usr/local/bin/volumenotifier up")},
+    {0, XF86XK_AudioLowerVolume,  spawn, SHCMD("/usr/local/bin/volumenotifier down")},
+    {0, XF86XK_AudioMute,         spawn, SHCMD("/usr/local/bin/volumenotifier mute")},
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("brillo -q -U 5")},
-    {0, XF86XK_RFKill, spawn, SHCMD("rfkill toggle all")},
-    {0, brightup, spawn, SHCMD("brillo -q -A 5")},
-    // {0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer --increase 4")},
-    {0, XF86XK_AudioRaiseVolume, spawn, SHCMD("/usr/local/bin/volumenotifier.sh up")},
-    // {0, XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer --decrease 4")},
-    {0, XF86XK_AudioLowerVolume, spawn, SHCMD("/usr/local/bin/volumenotifier.sh down")},
-    {0, XF86XK_AudioMute, spawn, SHCMD("/usr/local/bin/volumenotifier.sh mute")},
-    {0, XF86XK_AudioPlay, spawn, SHCMD("mpc toggle")},
-    {0, XF86XK_AudioPrev, spawn, SHCMD("mpc prev")},
-    {0, XF86XK_AudioNext, spawn, SHCMD("mpc next")},
-    // take screen shot
-    {0, printsc, spawn, SHCMD("gscreenshot")},
+    {0, XF86XK_RFKill,            spawn, SHCMD("rfkill toggle all")},
+    {0, brightup,                 spawn, SHCMD("brillo -q -A 5")},
+    {0, XF86XK_AudioPlay,         spawn, SHCMD("mpc toggle")},
+    {0, XF86XK_AudioPrev,         spawn, SHCMD("mpc prev")},
+    {0, XF86XK_AudioNext,         spawn, SHCMD("mpc next")},
+    {0, printsc,                  spawn, SHCMD("gscreenshot")}, //to take screenshot
+    {MODKEY | ShiftMask, XK_p, spawn, SHCMD("~/.scripts/power_menu")},
+    {altkey, 0xff52, spawn, SHCMD("~/.scripts/bright_notif up")},
+    {altkey, 0xff54, spawn, SHCMD("~/.scripts/bright_notif down")},
 
-    {altkey, XK_f, spawn, SHCMD("librewolf")},
+//These were replaced by scripts to support dunst
+ // {0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer --increase 4")},
+ // {0, XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer --decrease 4")},
+ // {altkey, XK_p, spawn, SHCMD("firefox --private-window --new-tab")},
+ // {altkey, 0xff52, spawn, SHCMD("brillo -q -A 5")},
+ // {altkey, 0xff54, spawn, SHCMD("brillo -q -U 5")},
 
-    {MODKEY, XK_n, spawn, SHCMD("nemo")},
+//custom keybindings to Launch applications/programs
+    {MODKEY, XK_n,   spawn, SHCMD("nemo")},
+    {altkey, XK_f,   spawn, SHCMD("librewolf")},
+    {altkey, XK_p,   spawn, SHCMD("librewolf --private-window --new-tab")},
+    {altkey, XK_n,   spawn, SHCMD("librewolf --private-window /home/ceaser/Desktop/")},
 
-    // {altkey, XK_p, spawn, SHCMD("firefox --private-window --new-tab")},
-    {altkey, XK_p, spawn, SHCMD("librewolf --private-window --new-tab")},
-
-    // {altkey, 0xff52, spawn, SHCMD("brillo -q -A 5")},
-    {altkey, 0xff52, spawn, SHCMD("~/.scripts/bright_notif.sh up")},
-
-    // {altkey, 0xff54, spawn, SHCMD("brillo -q -U 5")},
-    {altkey, 0xff54, spawn, SHCMD("~/.scripts/bright_notif.sh down")},
-
-    {altkey, XK_n, spawn,
-     SHCMD("librewolf --private-window /home/ceaser/Desktop/")},
-
-    // rofi drun 
-    // {MODKEY, XK_d, spawn, SHCMD("rofi -show drun")},
-    {MODKEY | ShiftMask, XK_p, spawn,
-     // SHCMD("rofi -show p -modi p:$HOME/.config/rofi/rofi-power-menu")},
-     SHCMD("power_menu.sh")},
-    //
+//mostly inbuilt keybindings
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
-    {MODKEY, XK_d, spawn, {.v = dmenucmd}},
+    {MODKEY, XK_p, spawn, {.v = dmenucmd}},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstackvis, {.i = +1}},
     {MODKEY, XK_k, focusstackvis, {.i = -1}},
@@ -165,8 +159,8 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_s, showall, {0}},
     {MODKEY | ShiftMask, XK_h, hide, {0}},
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
-        TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
-            TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
+    TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
+    TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
 };
 
 /* button definitions */
