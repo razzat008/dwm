@@ -35,10 +35,11 @@ static const Rule rules[] = {
      *	WM_NAME(STRING) = title
      */
     /* class      instance    title       tags mask     isfloating   monitor */
-    {"Gimp",      NULL,       NULL,           0,        0,           -1},
+    // {"Gimp",      NULL,       NULL,           0,        0,           -1},
+    // {"neovide",   NULL,       NULL,       1 <<2  ,      0,           -1 },
     {"LibreWolf", NULL,       NULL,       1 <<1 ,       0,           -1},
     {"Signal",    NULL,       NULL,       1 <<3  ,      0,           -1 },
-    {"neovide",   NULL,       NULL,       1 <<2  ,      0,           -1 },
+
     /* class            instance    title       tags mask     isfloating   monitor */
     {"Nitrogen",        NULL,       NULL,       0,                1,        -1},
     {"Gscreenshot",     NULL,       NULL,       0,                1,        -1},
