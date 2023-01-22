@@ -95,11 +95,12 @@ static const char *termcmd[] = {"/usr/local/bin/st", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
+
 //custom keybindings
     {altkey,        space,        spawn, SHCMD("via ")}, //to use via
-    {0, XF86XK_AudioRaiseVolume,  spawn, SHCMD("/usr/local/bin/volumenotifier up")},
-    {0, XF86XK_AudioLowerVolume,  spawn, SHCMD("/usr/local/bin/volumenotifier down")},
-    {0, XF86XK_AudioMute,         spawn, SHCMD("/usr/local/bin/volumenotifier mute")},
+    {0, XF86XK_AudioRaiseVolume,  spawn, SHCMD("~/.local/bin/volumenotifier up")},
+    {0, XF86XK_AudioLowerVolume,  spawn, SHCMD("~/.local/bin/volumenotifier down")},
+    {0, XF86XK_AudioMute,         spawn, SHCMD("~/.local/bin/volumenotifier mute")},
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("brillo -q -U 5")},
     {0, XF86XK_RFKill,            spawn, SHCMD("rfkill toggle all")},
     {0, brightup,                 spawn, SHCMD("brillo -q -A 5")},
@@ -108,6 +109,8 @@ static const Key keys[] = {
     {0, XF86XK_AudioNext,         spawn, SHCMD("mpc next")},
     {0, printsc,                  spawn, SHCMD("gscreenshot")}, //to take screenshot
     {MODKEY | ShiftMask, XK_p, spawn, SHCMD("~/.scripts/power_menu")},
+
+//to control brightness
     {altkey, 0xff52, spawn, SHCMD("~/.scripts/bright_notif up")},
     {altkey, 0xff54, spawn, SHCMD("~/.scripts/bright_notif down")},
 
@@ -136,6 +139,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_d, incnmaster, {.i = -1}},
     {MODKEY, XK_h, setmfact, {.f = -0.05}},
     {MODKEY, XK_l, setmfact, {.f = +0.05}},
+// switch between master and slave stack
     {MODKEY | ShiftMask, XK_Return, zoom, {0}},
     {MODKEY, XK_Tab, view, {0}},
     {MODKEY, XK_q, killclient, {0}},
@@ -156,11 +160,21 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
     {MODKEY, XK_s, show, {0}},
+
+//hide and show tags
     {MODKEY | ShiftMask, XK_s, showall, {0}},
     {MODKEY | ShiftMask, XK_h, hide, {0}},
-    TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
-    TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
-    TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
+//go to tag number
+    TAGKEYS(XK_1, 0) 
+    TAGKEYS(XK_2, 1) 
+    TAGKEYS(XK_3, 2) 
+    TAGKEYS(XK_4, 3)
+    TAGKEYS(XK_5, 4) 
+    TAGKEYS(XK_6, 5) 
+    TAGKEYS(XK_7, 6) 
+    TAGKEYS(XK_8, 7)
+    TAGKEYS(XK_9, 8)
+    {MODKEY | ShiftMask, XK_q, quit, {0}},
 };
 
 /* button definitions */
