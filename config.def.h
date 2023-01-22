@@ -11,21 +11,19 @@ static const int vertpad = 0;           /* vertical padding of bar */
 static const int sidepad = 0;           /* horizontal padding of bar */
 // static const char *fonts[]          = { "Iosevka:size=16" };
 static const char dmenufont[] = "Iosevka:size=10";
-static const char *fonts[] = {"Iosevka:style:medium:size=10",
-                              "JetBrainsMono Nerd Font:style:medium:size=11",
-                              "Material Design Icons Desktop:size=11"};
+static const char *fonts[] = {"Iosevka:style:medium:size=10", "JetBrainsMono Nerd Font:style:medium:size=10", "Material Design Icons Desktop:size=10"};
 static const char col_gray1[] = "#222222"; // backgroud colour normally seen
-static const char col_gray2[] = "#83bae8"; // border for unfocused window
+static const char col_gray2[] = "#E8B082"; // border for unfocused window
 static const char col_gray3[] = "#fff";    // font color ;normal
-static const char col_gray4[] = "#000000"; // font color when focused on a
-                                           // window
-static const char col_cyan[] =
-    "#83bae8"; // border color when the window is focused
+static const char col_gray4[] = "#000000"; // font color when focused on a window
+static const char col_cyan[] = "#E8B082";  // border color when the window is focused
+                                           //this is the default color #83bae8
+
 static const char *colors[][3] = {
     /*               fg         bg         border   */
-    [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
-    [SchemeSel] = {col_gray4, col_cyan, col_cyan},
-    [SchemeHid] = {col_cyan, col_gray1, col_cyan},
+    [SchemeNorm] = {col_gray3, col_gray1,   col_gray2},
+    [SchemeSel] =  {col_gray4, col_cyan,    col_cyan},
+    [SchemeHid] =  {col_cyan,  col_gray1,   col_cyan},
 };
 
 /* tagging */
