@@ -135,7 +135,7 @@ static const Key keys[] = {
     {altkey, XK_f,   spawn, SHCMD("librewolf")},
     {altkey, XK_m,   spawn, SHCMD("st ncmpcpp")},
     {altkey, XK_h,   spawn, SHCMD("st htop")},
-    {altkey, XK_k,   spawn, SHCMD("st vim -R ~/.config/suckless/dwm/keymaps.md")},
+    {altkey, XK_k,   spawn, SHCMD("st vim -R ~/.config/suckless/dwm/config.def.h")},
     {altkey, XK_p,   spawn, SHCMD("librewolf --private-window --new-tab")},
     {altkey, XK_n,   spawn, SHCMD("librewolf --private-window /home/ceaser/Desktop/")},
 
