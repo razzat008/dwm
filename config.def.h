@@ -27,7 +27,15 @@ static const char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = {"", "", "3", "", "5", "6", "7", "8", "9"};
+/*
+ 1= terminal
+ 2= browser
+ 3= emails
+ 4= messenging
+ 5= music
+ 6= discord
+ */
+static const char *tags[] = {"", "", "", "", "", "", "7", "8", "9"};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -39,6 +47,7 @@ static const Rule rules[] = {
     // {"neovide",   NULL,       NULL,       1 <<2  ,      0,           -1 },
     {"LibreWolf", NULL,       NULL,       1 <<1 ,       0,           -1},
     {"Signal",    NULL,       NULL,       1 <<3  ,      0,           -1 },
+    {"discord",   NULL,       NULL,       1 <<5  ,      0,           -1 },
 
     /* class            instance    title       tags mask     isfloating   monitor */
     {"Nitrogen",        NULL,       NULL,       0,                1,        -1},
@@ -123,6 +132,7 @@ static const Key keys[] = {
 //custom keybindings to Launch applications/programs
     {MODKEY, XK_n,   spawn, SHCMD("nemo")},
     {altkey, XK_f,   spawn, SHCMD("librewolf")},
+    {altkey, XK_m,   spawn, SHCMD("ncmpcpp")},
     {altkey, XK_p,   spawn, SHCMD("librewolf --private-window --new-tab")},
     {altkey, XK_n,   spawn, SHCMD("librewolf --private-window /home/ceaser/Desktop/")},
 
