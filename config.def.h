@@ -35,7 +35,7 @@ static const char *colors[][3] = {
  5= music
  6= discord
  */
-static const char *tags[] = {"", "", "3", "", "5", "", "", "8", "9"};
+static const char *tags[] = {"", "", "3", "", "5", "", " ", "8", "9"};
 
 static const Rule rules[] = {
     /* xprop(1):
