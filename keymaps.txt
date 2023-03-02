@@ -124,3 +124,10 @@ static const Rule rules[] = {
     TAGKEYS(XK_9, 8)
     {MODKEY | ShiftMask, XK_q, quit, {0}},
 };
+
+
+// to increase or decrease gap between windows
+modkey + - --> to decrease
+modkey + = --> to increase
+
+

@@ -3,7 +3,7 @@
 
 /* appearance */
 static const unsigned int borderpx = 0; /* border pixel of windows */
-static const unsigned int gappx = 5;    /* gap pixel between windows */
+static const unsigned int gappx = 4;    /* gap pixel between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
@@ -16,7 +16,8 @@ static const char col_gray1[] = "#222222"; // backgroud colour normally seen
 static const char col_gray2[] = "#E8B082"; // border for unfocused window
 static const char col_gray3[] = "#fff";    // font color ;normal
 static const char col_gray4[] = "#000000"; // font color when focused on a window
-static const char col_cyan[] = "#E8B082";  // border color when the window is focused
+// static const char col_cyan[] = "#E8B082";  // border color when the window is focused
+static const char col_cyan[] = "#83bae8";  // border color when the window is focused
                                            //this is the default color #83bae8
 
 static const char *colors[][3] = {
@@ -150,8 +151,8 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_k, focusstackhid, {.i = -1}},
     {MODKEY, XK_i, incnmaster, {.i = +1}},
     {MODKEY | ShiftMask, XK_d, incnmaster, {.i = -1}},
-    {MODKEY, XK_h, setmfact, {.f = -0.05}},
-    {MODKEY, XK_l, setmfact, {.f = +0.05}},
+    {MODKEY, XK_h, setmfact, {.f = -0.005}},
+    {MODKEY, XK_l, setmfact, {.f = +0.005}},
 // switch between master and slave stack
   //
   	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
