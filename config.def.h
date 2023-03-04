@@ -151,8 +151,8 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_k, focusstackhid, {.i = -1}},
     {MODKEY, XK_i, incnmaster, {.i = +1}},
     {MODKEY | ShiftMask, XK_d, incnmaster, {.i = -1}},
-    {MODKEY, XK_h, setmfact, {.f = -0.005}},
-    {MODKEY, XK_l, setmfact, {.f = +0.005}},
+    {MODKEY, XK_h, setmfact, {.f = -0.05}},
+    {MODKEY, XK_l, setmfact, {.f = +0.05}},
 // switch between master and slave stack
   //
   	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
