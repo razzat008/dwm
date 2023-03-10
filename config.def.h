@@ -144,6 +144,7 @@ static const Key keys[] = {
 //mostly inbuilt keybindings
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
+    {MODKEY, XK_d, spawn, SHCMD("rofi -show drun")},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstackvis, {.i = +1}},
     {MODKEY, XK_k, focusstackvis, {.i = -1}},
