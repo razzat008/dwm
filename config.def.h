@@ -108,17 +108,21 @@ static const Key keys[] = {
     /* modifier                     key        function        argument */
 
 //custom keybindings
-    {altkey,        space,        spawn, SHCMD("via ")}, //to use via
     {0, XF86XK_AudioRaiseVolume,  spawn, SHCMD("~/.local/bin/volumenotifier up")},
     {0, XF86XK_AudioLowerVolume,  spawn, SHCMD("~/.local/bin/volumenotifier down")},
     {0, XF86XK_AudioMute,         spawn, SHCMD("~/.local/bin/volumenotifier mute")},
-    {0, XF86XK_MonBrightnessDown, spawn, SHCMD("brillo -q -U 5")},
     {0, XF86XK_RFKill,            spawn, SHCMD("rfkill toggle all")},
-    {0, brightup,                 spawn, SHCMD("brillo -q -A 5")},
+    {0, XF86XK_MonBrightnessDown, spawn, SHCMD("~/.scripts/bright_notif down")},
+    {0, brightup,                 spawn, SHCMD("~/.scripts/bright_notif up")},
     {0, XF86XK_AudioPlay,         spawn, SHCMD("mpc toggle")},
     {0, XF86XK_AudioPrev,         spawn, SHCMD("mpc prev")},
     {0, XF86XK_AudioNext,         spawn, SHCMD("mpc next")},
+
+// to use gscreenshot
     {0, printsc,                  spawn, SHCMD("gscreenshot")}, //to take screenshot
+// to use flame shot
+    {MODKEY, printsc,                  spawn, SHCMD("flameshot gui")}, //to take screenshot
+  //
     {MODKEY | ShiftMask, XK_p, spawn, SHCMD("~/.scripts/power_menu")},
 
 //to control brightness
@@ -140,7 +144,7 @@ static const Key keys[] = {
     // shortcut to view all present keybindings
     // {altkey, XK_k,   spawn, SHCMD("st vim -R ~/.config/suckless/dwm/keymaps.md")},
     {altkey, XK_p,   spawn, SHCMD("librewolf --private-window --new-tab")},
-    {altkey, XK_n,   spawn, SHCMD("librewolf --private-window /home/ceaser/Desktop/")},
+    {altkey, XK_n,   spawn, SHCMD("librewolf --private-window /home/ceaser/Desktop/")}, //used to view pdfs
 
 //mostly inbuilt keybindings
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
