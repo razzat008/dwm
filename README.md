@@ -63,3 +63,7 @@ gscreenshot_2023-03-24-162524.png
 ![screenshot1](./screenshots/gscreenshot_2023-03-24-162328.png)
 ![screenshot1](./screenshots/gscreenshot_2023-03-24-162524.png)
 ![screenshot1](./screenshots/gscreenshot_2023-03-24-162606.png)
+
+### Scripts?? and other dots?
+
+Look at my [dotfiles](https://github.com/razzat008/dotfils) repo.
