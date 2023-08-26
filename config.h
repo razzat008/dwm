@@ -2,7 +2,7 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx = 0; /* border pixel of windows */
+static const unsigned int borderpx = 2; /* border pixel of windows */
 static const unsigned int gappx = 9;    /* gap pixel between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
@@ -19,13 +19,14 @@ static const char col_gray3[] = "#fff";    // font color ;normal
 static const char col_gray4[] = "#000000"; // font color when focused on a window
 // static const char col_cyan[] = "#E8B082";  // border color when the window is focused
 // static const char col_cyan[] = "#83bae8";  // border color when the window is focused
+static const char col_active[] = "#83bae8";
 static const char col_cyan[] = "#ABE9B3";  // border color when the window is focused
                                            //this is the default color #83bae8
 
 static const char *colors[][3] = {
     /*               fg         bg         border   */
     [SchemeNorm] = {col_gray3, col_gray1,   col_gray2},
-    [SchemeSel] =  {col_gray4, col_cyan,    col_cyan},
+    [SchemeSel] =  {col_gray4, col_cyan,    col_active},
     [SchemeHid] =  {col_cyan,  col_gray1,   col_cyan},
 };
 
@@ -58,6 +59,8 @@ static const Rule rules[] = {
     {"Pavucontrol",        NULL,       NULL,       0,                1,        -1},
     {"Gscreenshot",     NULL,       NULL,       0,                1,        -1},
     {"TelegramDesktop", NULL,       NULL,       1 << 3,           0,        -1},
+    {"Element", NULL,       NULL,       1 << 3,           0,        -1},
+
 };
 
 /* layout(s) */
@@ -114,8 +117,8 @@ static const Key keys[] = {
     {0, XF86XK_AudioLowerVolume,  spawn, SHCMD("~/.local/bin/volumenotifier down")},
     {0, XF86XK_AudioMute,         spawn, SHCMD("~/.local/bin/volumenotifier mute")},
     {0, XF86XK_RFKill,            spawn, SHCMD("rfkill toggle all")},
-    {0, XF86XK_MonBrightnessDown, spawn, SHCMD("~/.scripts/bright_notif down")},
-    {0, brightup,                 spawn, SHCMD("~/.scripts/bright_notif up")},
+//    {0, XF86XK_MonBrightnessDown, spawn, SHCMD("~/.scripts/bright_notif down")},
+//   {0, brightup,                 spawn, SHCMD("~/.scripts/bright_notif up")},
     {0, XF86XK_AudioPlay,         spawn, SHCMD("mpc toggle")},
     {0, XF86XK_AudioPrev,         spawn, SHCMD("mpc prev")},
     {0, XF86XK_AudioNext,         spawn, SHCMD("mpc next")},
@@ -141,6 +144,8 @@ static const Key keys[] = {
 //custom keybindings to Launch applications/programs
     {MODKEY, XK_n,   spawn, SHCMD("nemo")},
     {altkey, XK_f,   spawn, SHCMD("librewolf")},
+    {altkey, XK_t,   spawn, SHCMD("telegram-desktop")},
+    {altkey, XK_b,   spawn, SHCMD("firefox")},
     // {altkey, XK_m,   spawn, SHCMD("st ncmpcpp")},
     // {altkey, XK_h,   spawn, SHCMD("st htop")},
     // shortcut to view all present keybindings
@@ -154,8 +159,8 @@ static const Key keys[] = {
     {MODKEY, XK_d, spawn, SHCMD("rofi -show drun")},
     {MODKEY, XK_e, spawn, SHCMD("rofi -show emoji")},
     {MODKEY, XK_b, togglebar, {0}},
-    {MODKEY, XK_j, focusstackvis, {.i = +1}},
-    {MODKEY, XK_k, focusstackvis, {.i = -1}},
+    {MODKEY, XK_k, focusstackvis, {.i = +1}},
+    {MODKEY, XK_j, focusstackvis, {.i = -1}},
     {MODKEY | ShiftMask, XK_j, focusstackhid, {.i = +1}},
     {MODKEY | ShiftMask, XK_k, focusstackhid, {.i = -1}},
     {MODKEY, XK_i, incnmaster, {.i = +1}},
