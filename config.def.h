@@ -7,7 +7,7 @@ static const unsigned int gappx = 9;    /* gap pixel between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
-static const int vertpad = 2;           /* vertical padding of bar */
+static const int vertpad = 0;           /* vertical padding of bar */
 static const int sidepad = 0;           /* horizontal padding of bar */
 // static const char *fonts[]          = { "Iosevka:size=16" };
 static const char dmenufont[] = "Iosevka:size=10";
@@ -39,7 +39,7 @@ static const char *colors[][3] = {
  7= emails
  */
 
-static const char *tags[] = {"", "", "3", "", "5", "", " ", "8", "9"};
+static const char *tags[] = {"", "", "", "", "5", "", " ", "8", "9"};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -50,6 +50,7 @@ static const Rule rules[] = {
     // {"Gimp",      NULL,       NULL,           0,        0,           -1},
     // {"neovide",   NULL,       NULL,       1 <<2  ,      0,           -1 },
     {"LibreWolf",    NULL,       NULL,       1 <<1 ,       0,           -1},
+    {"Brave-browser",    NULL,       NULL,       1 <<1 ,       0,           -1},
     {"Signal",       NULL,       NULL,       1 <<3  ,      0,           -1 },
     {"discord",      NULL,       NULL,       1 <<5  ,      0,           -1 },
     {"thunderbird",  NULL,       NULL,       1 <<6  ,      0,           -1 },
@@ -89,6 +90,7 @@ static const Layout layouts[] = {
 #define MODKEY Mod4Mask
 #define altkey Mod1Mask
 #define space 0x20
+// defining keys for binding to brightness and screenshot
 #define printsc 0xff61
 #define brightup 0x1008FF02
 // #define altkey Mod1Mask
@@ -113,9 +115,9 @@ static const Key keys[] = {
     /* modifier                     key        function        argument */
 
 //custom keybindings
-    {0, XF86XK_AudioRaiseVolume,  spawn, SHCMD("~/.local/bin/volumenotifier up")},
-    {0, XF86XK_AudioLowerVolume,  spawn, SHCMD("~/.local/bin/volumenotifier down")},
-    {0, XF86XK_AudioMute,         spawn, SHCMD("~/.local/bin/volumenotifier mute")},
+    {0, XF86XK_AudioRaiseVolume,  spawn, SHCMD("~/.scripts/volumenotifier up")},
+    {0, XF86XK_AudioLowerVolume,  spawn, SHCMD("~/.scripts/volumenotifier down")},
+    {0, XF86XK_AudioMute,         spawn, SHCMD("~/.scripts/volumenotifier mute")},
     {0, XF86XK_RFKill,            spawn, SHCMD("rfkill toggle all")},
 //    {0, XF86XK_MonBrightnessDown, spawn, SHCMD("~/.scripts/bright_notif down")},
 //   {0, brightup,                 spawn, SHCMD("~/.scripts/bright_notif up")},
@@ -146,12 +148,12 @@ static const Key keys[] = {
     {altkey, XK_f,   spawn, SHCMD("librewolf")},
     {altkey, XK_t,   spawn, SHCMD("telegram-desktop")},
     {altkey, XK_b,   spawn, SHCMD("firefox")},
-    // {altkey, XK_m,   spawn, SHCMD("st ncmpcpp")},
+    {altkey, XK_m,   spawn, SHCMD("st ncmpcpp")},
     // {altkey, XK_h,   spawn, SHCMD("st htop")},
     // shortcut to view all present keybindings
     // {altkey, XK_k,   spawn, SHCMD("st vim -R ~/.config/suckless/dwm/keymaps.md")},
     {altkey, XK_p,   spawn, SHCMD("librewolf --private-window --new-tab")},
-    {altkey, XK_n,   spawn, SHCMD("librewolf --private-window /home/ceaser/Desktop/")}, //used to view pdfs
+    {altkey, XK_n,   spawn, SHCMD("brave")}, // to Launch brave browser
 
 //mostly inbuilt keybindings
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
@@ -167,11 +169,11 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_d, incnmaster, {.i = -1}},
     {MODKEY, XK_h, setmfact, {.f = -0.05}},
     {MODKEY, XK_l, setmfact, {.f = +0.05}},
+    
 // switch between master and slave stack
-  //
-  	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
-  	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
-  	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
+  	{MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
+  	{MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
+  	{MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
     {MODKEY | ShiftMask, XK_Return, zoom, {0}},
     {MODKEY, XK_Tab, view, {0}},
     {MODKEY, XK_q, killclient, {0}},
