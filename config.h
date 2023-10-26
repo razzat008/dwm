@@ -38,8 +38,8 @@ static const char *colors[][3] = {
  6= discord
  7= emails
  */
-
 static const char *tags[] = {"", "", "", "", "5", "", " ", "8", "9"};
+
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -88,12 +88,12 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod4Mask
-#define altkey Mod1Mask
+#define ALTKEY Mod1Mask
 #define space 0x20
 // defining keys for binding to brightness and screenshot
 #define printsc 0xff61
 #define brightup 0x1008FF02
-// #define altkey Mod1Mask
+// #define ALTKEY Mod1Mask
 #define TAGKEYS(KEY, TAG)                                                      \
       {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
       {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
@@ -133,33 +133,34 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_p, spawn, SHCMD("~/.scripts/power_menu")},
 
 //to control brightness
-    {altkey, 0xff52, spawn, SHCMD("~/.scripts/bright_notif up")},
-    {altkey, 0xff54, spawn, SHCMD("~/.scripts/bright_notif down")},
+    {ALTKEY, 0xff52, spawn, SHCMD("~/.scripts/bright_notif up")},
+    {ALTKEY, 0xff54, spawn, SHCMD("~/.scripts/bright_notif down")},
 
 //These were replaced by scripts to support dunst
  // {0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer --increase 4")},
  // {0, XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer --decrease 4")},
- // {altkey, XK_p, spawn, SHCMD("firefox --private-window --new-tab")},
- // {altkey, 0xff52, spawn, SHCMD("brillo -q -A 5")},
- // {altkey, 0xff54, spawn, SHCMD("brillo -q -U 5")},
+ // {ALTKEY, XK_p, spawn, SHCMD("firefox --private-window --new-tab")},
+ // {ALTKEY, 0xff52, spawn, SHCMD("brillo -q -A 5")},
+ // {ALTKEY, 0xff54, spawn, SHCMD("brillo -q -U 5")},
 
 //custom keybindings to Launch applications/programs
     {MODKEY, XK_n,   spawn, SHCMD("nemo")},
-    {altkey, XK_f,   spawn, SHCMD("librewolf")},
-    {altkey, XK_t,   spawn, SHCMD("telegram-desktop")},
-    {altkey, XK_b,   spawn, SHCMD("firefox")},
-    {altkey, XK_m,   spawn, SHCMD("st ncmpcpp")},
-    // {altkey, XK_h,   spawn, SHCMD("st htop")},
+    {ALTKEY, XK_f,   spawn, SHCMD("librewolf")},
+    {ALTKEY, XK_t,   spawn, SHCMD("telegram-desktop")},
+    {ALTKEY, XK_b,   spawn, SHCMD("firefox")},
+    {ALTKEY, XK_m,   spawn, SHCMD("st ncmpcpp")},
+    {ALTKEY, XK_p,   spawn, SHCMD("librewolf --private-window --new-tab")},
+    {ALTKEY, XK_n,   spawn, SHCMD("brave")}, // to Launch brave browser
+    {MODKEY, XK_d, spawn, SHCMD("rofi -show drun")},
+    {MODKEY, XK_c, spawn, SHCMD("rofi -show calc -modi calc -no-show-match -no-sort")},
+    {MODKEY, XK_e, spawn, SHCMD("rofi -show emoji")},
+    // {ALTKEY, XK_h,   spawn, SHCMD("st htop")},
     // shortcut to view all present keybindings
-    // {altkey, XK_k,   spawn, SHCMD("st vim -R ~/.config/suckless/dwm/keymaps.md")},
-    {altkey, XK_p,   spawn, SHCMD("librewolf --private-window --new-tab")},
-    {altkey, XK_n,   spawn, SHCMD("brave")}, // to Launch brave browser
+    // {ALTKEY, XK_k,   spawn, SHCMD("st vim -R ~/.config/suckless/dwm/keymaps.md")},
 
 //mostly inbuilt keybindings
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_p, spawn, {.v = dmenucmd}},
-    {MODKEY, XK_d, spawn, SHCMD("rofi -show drun")},
-    {MODKEY, XK_e, spawn, SHCMD("rofi -show emoji")},
     {MODKEY, XK_b, togglebar, {0}},
     {MODKEY, XK_k, focusstackvis, {.i = +1}},
     {MODKEY, XK_j, focusstackvis, {.i = -1}},
