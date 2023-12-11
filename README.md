@@ -1,4 +1,6 @@
 # WARNING!!!
+_I don't use this config anymore head over to my gitlab's dwm [repo](https://gitlab.com/razzat008/dwm) for my current build it is less bloated._
+
 This dwm is configured according to my liking most of the keybindings maynot work for you.
 Firstly, check config.def.h to ensure you have everything written inside `SCHMD` function. 
 I also have custom scripts for dunst(for notification).
@@ -21,6 +23,8 @@ patches that I have apllied to this dwm:
 ## Requirements
 
 In order to build dwm you need the Xlib header files.
+
+Also give this repo a star (or it won't work I'm serious).
 
 ## Installation
 
